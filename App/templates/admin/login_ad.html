@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线投稿-管理员登录界面</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+    <style>
+        body {
+            background: url("../../static/img/bj02.jpg") fixed center/100% 100%;
+        }
+
+        .ff {
+            width: 1100px;
+            height: 450px;
+            position: relative;
+            margin: 150px auto 0;
+        }
+
+
+        .son {
+            width: 330px;
+            border: 1px solid #888;
+            position: absolute;
+            right: 0;
+            border-radius: 4px;
+            padding: 10px 70px 50px;
+            background-color: rgba(180, 180, 200, 0.7);
+        }
+
+        .son p {
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 16px;
+            margin-top: 20px;
+            color: #eee;
+        }
+
+        .son .one {
+            height: 100px;
+
+        }
+
+        .son .one p {
+            font-size: 45px;
+            font-weight: 700;
+            font-family: "楷体";
+            line-height: 100px;
+            text-align: center;
+            color: #1cf;
+        }
+
+        .my_title {
+            width: 600px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+        }
+
+        .my_title h1 {
+            font-size: 60px;
+            line-height: 100px;
+            color: #1cf;
+            text-indent: 50px;
+        }
+
+        .my_title p {
+            font-size: 30px;
+            line-height: 50px;
+            text-indent: 100px;
+            color: #1cf;
+        }
+
+        .box {
+            width: 200px;
+            height: 30px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+
+        .btn1 {
+            width: 50px;
+            height: 26px;
+            background-color: #ddd;
+            margin: 50px 0 20px 28px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="ff">
+    <div class="my_title">
+        <h1>在线投稿管理平台</h1>
+        <p>管理员登录页面</p>
+    </div>
+    <div class="son">
+        <div class="one">
+            <p>欢迎登录</p>
+        </div>
+        <form action="#" method="post">
+            <p>用户名:</p>
+            <input type="text" name="adname" class="box" minlength="3" maxlength="12"
+                   aria-errormessage="用户名长度在3~12位之间..." required>
+            <p>密码:</p>
+            <input type="password" name="passwd" class="box" minlength="6" maxlength="12"
+                   aria-errormessage="密码长度在6~12位之间..." required>
+            <input type="submit" class="btn1" value="登录">
+            <input type="reset" class="btn1" value="重置">
+
+        </form>
+    </div>
+</div>
+
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

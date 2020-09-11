@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线投稿与稿件管理系统</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        body {
+            background: url("../../static/img/index_bj.jpg") no-repeat fixed center/100% 100%;
+        }
+        .father{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            width: 1150px;
+            height: 400px;
+            margin-top: -200px;
+            margin-left: -600px;
+            padding-left: 50px;
+        }
+        .son1{
+            float: left;
+            width: 800px;
+            height: 100%;
+        }
+        .son1 h1{
+            margin-top: 80px;
+            color: #1bf;
+            font-weight: bold;
+            font-size: 80px;
+            font-family: '楷体', cursive;
+        }
+        .son2{
+            float: right;
+            text-align: center;
+            width: 300px;
+            height: 390px;
+            border-radius: 4px;
+            background-color: rgba(200,200,200,0.6);
+        }
+        .son2 p{
+            font-family: '楷体', monospace;
+            font-weight: bold;
+            font-size: 30px;
+            margin: 60px auto;
+            color: #1cf;
+        }
+        .son2 .btn1{
+            border: 1px inset #1ef;
+            border-radius: 4px;
+            position: relative;
+            width: 200px;
+            height: 40px;
+            margin: 20px auto;
+            color: #fff;
+            background-color: #1bf;
+        }
+
+        .son2 .btn1 a{
+            width: 200px;
+            height: 40px;
+            float: left;
+            left: -1px;
+            top: -1px;
+            position: absolute;
+            line-height: 40px;
+        }
+        .ad{
+            padding: 0 7px;
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<a href="{{ url_for('admin.login') }}" class="ad"></a>
+<div class="father">
+    <div class="son1">
+        <h1>在线投稿管理系统</h1>
+    </div>
+    <div class="son2">
+        <p>请选择你的身份</p>
+        <button class="btn1">我是用户，我要投稿<a href="{{ url_for('user.login') }}"></a></button>
+        <br>
+        <button class="btn1">我是专家，我要审稿<a href="{{ url_for('expert.login') }}"></a></button>
+    </div>
+</div>
+</div>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>root管理员</title>
+    <style>
+        body {
+            background: url("../../static/img/q04.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            background-color: rgba(225, 225, 225, 0.7);
+            width: 500px;
+            height: 360px;
+            margin: 150px auto 10px;
+            border-radius: 4px;
+            padding: 20px 80px;
+        }
+
+        .father h2 {
+            line-height: 80px;
+            border-bottom: 1px solid #000;
+            font-weight: bold;
+
+        }
+        p{
+            font-size: 18px;
+            text-indent: 20px;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="father">
+    <h2>root管理员创建</h2>
+    {% if num == 1 %}
+        <p>root管理员已经存在，不可创建</p>
+    {% elif num == 2 %}
+        <p>root管理员注册成功,基本信息如下:</p>
+        <p>用户名为:root</p>
+        <p>初始密码为:123456</p>
+        <p>初始邮箱为:1234567898@qq.com</p>
+    {% else%}
+        <p>root管理员注册失败</p>
+    {% endif %}
+</div>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

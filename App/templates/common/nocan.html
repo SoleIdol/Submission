@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问地址受限</title>
+    <style>
+        body {
+            background: url("../../static/img/q04.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            background-color: rgba(225, 225, 225, 0.7);
+            width: 400px;
+            height: 360px;
+            margin: 150px auto 0;
+            border-radius: 4px;
+            padding: 20px 100px;
+
+        }
+
+        .father .one {
+            line-height: 80px;
+            font-weight: 500;
+            border-bottom: 1px solid #000;
+            font-size: 30px;
+        }
+
+        .two{
+            line-height: 20px;
+            text-indent: 36px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="father">
+    <p class="one">访问地址受限</p>
+    <p class="two">一个浏览器只能一个用户登录</p>
+    <p class="two">当前浏览器登录用户为{{ u }}</p>
+    <p class="two">这是当前用户不能访问的页面哦~</p>
+</div>
+</body>
+</html>

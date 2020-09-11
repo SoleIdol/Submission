@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线投稿与稿件管理系统-专家页面</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+    <style>
+        body {
+            background: url("../../static/img/bj02.jpg") fixed center/100% 100%;
+        }
+
+        .ff {
+            width: 1150px;
+            height: 450px;
+            position: relative;
+            padding-left: 50px;
+            margin: 150px auto 0;
+        }
+
+        .father {
+            width: 320px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            position: absolute;
+            right: 0;
+            background-color: rgba(180, 180, 200, 0.7);
+        }
+
+        .son1, .son2, .son3 {
+            width: 100%;
+        }
+
+        .son1 {
+            height: 100px;
+            padding-top: 20px;
+        }
+
+        .son1 p {
+            font-size: 42px;
+            font-weight: 700;
+            font-family: "楷体";
+            line-height: 100px;
+            text-align: center;
+            color: #1cf;
+        }
+
+        .son2 {
+            height: 260px;
+            padding: 20px 50px 0;
+            color: #eee;
+        }
+
+        .son3 {
+            height: 80px;
+            padding: 0 50px;
+        }
+
+        .son3 a {
+            color: #fc1;
+            font-style: italic;
+            font-size: 13px;
+            margin-left: 80px;
+            line-height: 50px;
+        }
+
+        .my_title {
+            width: 600px;
+            position: absolute;
+            top: 50px;
+        }
+
+        .my_title h1 {
+            font-size: 60px;
+            line-height: 100px;
+            color: #1cf;
+        }
+
+        .my_title p {
+            font-size: 30px;
+            line-height: 50px;
+            text-indent: 50px;
+            color: #1cf;
+        }
+    </style>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="ff">
+
+    <div class="my_title">
+        <h1>在线投稿与稿件处理</h1>
+        <p>专家登录页面</p>
+    </div>
+    <div class="father">
+        <div class="son1">
+            <p>欢迎登录</p>
+        </div>
+        <div class="son2">
+            {% from 'bootstrap/wtf.html' import quick_form %}
+            {{ quick_form(form) }}
+
+        </div>
+        <div class="son3">
+            <a href="{{ url_for('expert.register') }}">没有账户？点我注册</a>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

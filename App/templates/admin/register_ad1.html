@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线投稿-管理员注册界面</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+    <style>
+        body {
+            background: url("../../static/img/bj02.jpg") fixed center/100% 100%;
+        }
+
+        .ff {
+            width: 1200px;
+            height: 550px;
+            position: relative;
+            margin: 100px auto 0;
+        }
+
+
+        .son {
+            width: 400px;
+            border: 1px solid #888;
+            position: absolute;
+            right: 0;
+            border-radius: 4px;
+            padding: 20px 70px;
+            background-color: rgba(180, 180, 200, 0.7);
+        }
+
+        .son p {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 14px;
+            margin-top: 18px;
+            color: #eee;
+        }
+
+        .my_title {
+            width: 600px;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+
+        .my_title h1 {
+            font-size: 60px;
+            line-height: 100px;
+            text-indent: 80px;
+            color: #f92;
+        }
+
+        .my_title p {
+            font-size: 30px;
+            line-height: 50px;
+            text-indent: 300px;
+            color: #f92;
+        }
+
+        .box {
+            width: 260px;
+            height: 30px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 13px;
+            line-height: 13px;
+        }
+
+        .dxx {
+            margin-left: 20px;
+            list-style: none;
+            font-size: 12px;
+            color: #ddd;
+            line-height: 12px;
+        }
+
+        .btn1 {
+            width: 100px;
+            height: 35px;
+            background-color: #eee;
+            margin: 20px 13px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="ff">
+    <div class="my_title">
+        <h1>在线投稿管理平台</h1>
+        <p>管理员注册页面</p>
+    </div>
+    <div class="son">
+        <form action="#" method="post">
+            <p>用户名:</p>
+            <input type="text" name="adname" class="box" minlength="3" maxlength="12"
+                   aria-errormessage="用户名长度在3~12位之间..." placeholder="用户名长度在3~12位之间..." required>
+            <p>密码:</p>
+            <input type="password" name="passwd" class="box" minlength="6" maxlength="12"
+                   aria-errormessage="密码长度在6~12位之间..." placeholder="密码长度在6~12位之间..." required>
+            <p>确认密码:</p>
+            <input type="password" name="repass" class="box" minlength="6" maxlength="12"
+                   aria-errormessage="密码长度在6~12位之间..." placeholder="密码长度在6~12位之间..." required>
+            <p>邮箱:</p>
+            <input type="email" name="email" class="box" placeholder="请输入邮箱..." required>
+            <p>管理员权限:</p>
+            <lu>
+                <li class="dxx">
+                    <input type="checkbox" class="dxx" name="pe1" value="1" id="pe1"><label for="pe1">可删除用户</label>
+                </li>
+                <li class="dxx">
+                    <input type="checkbox" class="dxx" name="pe2" value="2" id="pe2"><label for="pe2">可删除文件</label>
+                </li>
+                <li class="dxx">
+                    <input type="checkbox" class="dxx" name="pe4" value="4" id="pe4"><label for="pe4">可注册普通管理员</label>
+                </li>
+                <li class="dxx">
+                    <input type="checkbox" class="dxx" name="pe8" value="8" id="pe8"><label for="pe8">可注册超级管理员</label>
+                </li>
+            </lu>
+
+            <input type="submit" class="btn1" value="注册">
+            <input type="reset" class="btn1" value="重置">
+
+        </form>
+    </div>
+</div>
+
+<script src="../../static/dist/js/bootstrap.js"></script>
+<script src="../../static/dist/js/npm.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>稿件上传</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        body {
+            background: url("../../static/img/q03.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            width: 560px;
+            margin: 40px auto 10px;
+            background-color: rgba(225, 225, 225, 0.7);
+            padding: 35px 70px;
+            border-radius: 6px;
+        }
+
+        .username {
+            font-size: 15px;
+            margin-left: 30px;
+        }
+
+        .text1, .text2 {
+            width: 100%;
+            resize: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+
+        }
+
+        .text1 {
+            height: 50px;
+        }
+
+        .text2 {
+            height: 130px;
+        }
+
+        .one {
+            height: 16px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .upload {
+            line-height: 30px;
+        }
+
+        .btn {
+            border: 1px solid #999;
+            margin-top: 15px;
+        }
+        .err{
+            color: red;
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="father">
+    <form action="#" method="post" enctype="multipart/form-data">
+        <h2>稿件上传<span class="username">用户:{{ form.username }}</span></h2>
+        <hr>
+        {{ form.csrf_token }}
+
+
+        <p class="one">{{ form.fileTitle.label }}</p>
+        {{ form.fileTitle(class='text1') }}
+        <span class="err">
+            {#  显示验证器验证失败的错误信息  #}
+            {% for err in form.fileTitle.errors %}
+                {{ err }}
+            {% endfor %}
+        </span>
+
+        <p class="one">{{ form.keywords.label }}</p>
+        {{ form.keywords(class='text1') }}
+        <span class="err">
+            {#  显示验证器验证失败的错误信息  #}
+            {% for err in form.keywords.errors %}
+                {{ err }}
+            {% endfor %}
+        </span>
+
+        <p class="one">{{ form.digest.label }}</p>
+        {{ form.digest(class='text2') }}
+        <span class="err">
+            {#  显示验证器验证失败的错误信息  #}
+            {% for err in form.digest.errors %}
+                {{ err }}
+            {% endfor %}
+        </span>
+
+        <p class="one">稿件上传</p>
+        <p class="two">支持的文件格式有:rtf、odf、ods、gnumeric、abw、doc、docx、xls、xlsx</p>
+        <input type="file" name="file" class="file_btn" required>
+
+        <input type="submit" class="btn" value="提交">
+
+    </form>
+
+
+</div>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

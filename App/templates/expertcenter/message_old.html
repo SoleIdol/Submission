@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作者回复-消息记录</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url("../../static/img/q03.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            width: 600px;
+            margin: 40px auto 10px;
+            background-color: rgba(225, 225, 225, 0.7);
+            padding: 20px 60px 90px;
+            border-radius: 6px;
+        }
+
+        .father h2 {
+            line-height: 80px;
+        }
+
+        .box {
+            width: 480px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .son1 {
+            width: 487px;
+            height: 420px;
+            background-color: #fff;
+            padding: 5px 20px 5px 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .message_e, .message_u {
+            width: 300px;
+            padding: 5px;
+        }
+
+        .message_e {
+            float: right;
+        }
+
+        .message_u {
+            float: left;
+        }
+
+        .expert, .user {
+            padding: 5px;
+            border-radius: 4px;
+            line-height: 20px;
+        }
+
+        .expert {
+            background-color: #ddd;
+            float: right;
+        }
+
+        .user {
+            background-color: #6f6;
+            float: left;
+        }
+
+        .pe, .pu {
+            line-height: 12px;
+            font-weight: 400;
+            width: 290px;
+            margin-bottom: 0;
+        }
+
+        .pe {
+            float: right;
+            text-align: right;
+        }
+
+        .pu {
+            float: left;
+        }
+
+        .son1 .time {
+            width: 450px;
+            float: left;
+            text-align: center;
+            font-size: 8px;
+            margin-bottom: 0;
+        }
+
+        .son1 .eicon, .uicon {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        .eicon {
+            float: right;
+        }
+
+        .uicon {
+            float: left;
+        }
+
+        .son2 {
+            float: right;
+            width: 150px;
+            text-align: right;
+            padding: 5px;
+        }
+
+        .son2 a {
+            border: 1px solid #888;
+            border-radius: 4px;
+            line-height: 30px;
+            padding: 5px 20px;
+            background-color: #eee;
+            color: #222;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+<div class="father">
+    <h2>作者回复—消息记录</h2>
+    <div class="box">
+        <div class="son1">
+            {% for um in ums %}
+                <p class="time">{{ um.timestamp }}</p>
+                {% if um.expert %}
+                    <img src="{{ url_for('static',filename='upload/icon/s_'+eicon) }}" class="eicon" alt="没有找到头像...">
+                    <div class="message_e">
+                        <p class="pe">{{ um.name }}</p>
+                        <span class="expert">{{ um.content }}</span>
+                    </div>
+                {% else %}
+                    <img src="{{ url_for('static',filename='upload/icon/s_'+uicon) }}" class="uicon" alt="没有找到头像...">
+                    <div class="message_u">
+                        <p class="pu">{{ um.name }}</p>
+                        <span class="user">{{ um.content }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="son2">
+        <a href="/message_ex/{{ ums.first().uid }}_{{ ums.first().fid }}_{{ ums.first().eid }}">返回聊天窗口</a>
+    </div>
+</div>
+<script>
+    $('.son1').scrollTop(10000000000000);
+</script>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

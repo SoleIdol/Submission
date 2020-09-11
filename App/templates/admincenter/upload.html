@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>头像更换</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        body{
+            background: url("../../static/img/q01.jpg") no-repeat fixed center/100% 100%;
+        }
+        .father {
+            width: 500px;
+            margin: 50px auto 10px;
+            padding: 50px;
+            border: 1px solid #888;
+            background-color: rgba(225,225,225,0.8);
+            border-radius: 6px;
+        }
+        .father .son1{
+            font-size: 50px;
+            font-weight: bold;
+            color: #1ad;
+            font-family: "华文楷体";
+            line-height: 70px;
+            text-align: center;
+        }
+        .father .son2{
+            font-size: 15px;
+            font-weight: bold;
+            font-style: italic;
+
+        }
+        .father .son3{
+            font-size: 13px;
+            font-style: italic;
+            text-indent: 30px;
+
+        }
+        .user_icon {
+            height: 150px;
+            border-radius: 10px;
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    {% from 'bootstrap/wtf.html' import quick_form %}
+    <p class="son1">更换头像</p>
+    <p class="son2">温馨提示：</p>
+    <p class="son3">上传头像长宽比为1:1效果更好哦~</p>
+    <p class="son3">再次刷新界面，即可更新成功</p>
+    <img class="user_icon" src="{{ url_for('static',filename='upload/icon/m_'+current_user.icon) }}" alt="还没有头像哦~">
+    <hr>
+    {{ quick_form(form) }}
+</div>
+
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

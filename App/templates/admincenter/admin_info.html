@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息-管理员</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        body {
+            background: url("../../static/img/q02.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            width: 550px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            padding: 20px 80px 50px;
+            margin: 35px auto 10px;
+            background-color: rgba(225,225,225,0.8);
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="father">
+    {% from 'bootstrap/wtf.html' import quick_form %}
+    <h2 class="page-header">查看与修改个人信息</h2>
+    {{ quick_form(form) }}
+
+</div>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

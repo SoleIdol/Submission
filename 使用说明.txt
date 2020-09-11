@@ -1,0 +1,28 @@
+1.安装Python-3.7.6
+2.安装PyCharm
+3.安装所需扩展库
+
+永久修改pip的默认下载路径。
+在当前用户目录下创建一个pip的文件夹，然后再在文件夹里创建pip.ini文件并输入一下内容:
+************************
+[global]
+index-url=https://pypi.douban.com/simple
+[install]
+trusted-host=pypi.douban.com
+*************************
+安装扩展库命令：pip  install  -r  requirements.txt，（这里requirements.txt是储存扩展库的文件名）
+
+
+4.执行python manage.py runserver -d -r
+
+这是会出现一个错误ImportError: cannot import name 'secure_filename' from 'werkzeug'，这时，找到扩展库flask_uploads.py,
+找到flask_uploads.py文件
+将里面的from werkzeug 分两行写： 
+from werkzeug.utils import secure_filename 
+from werkzeug.datastructures import FileStorage
+
+之后重新执行python manage.py runserver -d -r命令即可
+
+5.点击网址，进入系统登录页面，进行相应操作
+
+系统操作：分为三种身份，具体操作，见演示视频

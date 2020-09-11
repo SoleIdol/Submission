@@ -1,0 +1,90 @@
+td {
+
+    border: 1px solid #555;
+    width: 100px;
+    height: 60px;
+}
+
+.tab_d {
+    width: 620px;
+    height: 350px;
+    background-color: #999;
+    margin: 150px auto 0;
+    border-radius: 4px;
+
+}
+
+.login_table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.ltd1 {
+    text-align: right;
+    width: 100px;
+    font-weight: 600;
+}
+
+.ltd2 {
+    text-align: left;
+    width: 200px;
+}
+
+.ltd3 {
+    width: 150px;
+}
+
+.input_t {
+    width: 200px;
+    height: 24px;
+    border-radius: 4px;
+    padding: 6px 12px;
+
+}
+
+.tr1_td {
+    width: 150px;
+
+}
+
+.tr4 {
+    font-size: 10px;
+    color: #888;
+}
+
+.tr4 a {
+    color: blue;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    background-color: cornflowerblue;
+}
+
+.one_d {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+
+    line-height: 80px;
+    font-size: 30px;
+    font-family: '华文楷体';
+
+}
+
+.btn {
+    color: #333;
+    background-color: cornflowerblue;
+    border-color: #adadad;
+    border-radius: 4px;
+}
+
+#check {
+    display: none;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 6px 10px;
+}

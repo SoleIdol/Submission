@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        body {
+            background: url("../../static/img/alterpass.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            width: 540px;
+            margin: 60px auto 10px;
+            background-color: rgba(225, 225, 225, 0.7);
+            padding: 20px 70px 100px;
+            border-radius: 6px;
+        }
+
+        .father h1 {
+            line-height: 100px;
+        }
+
+        .father p {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 30px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .father .passwd {
+            width: 400px;
+            height: 40px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            background-color: #eee;
+            border: 1px solid #aaa;
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div class="info">
+    {% for info in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span>
+            </button>
+            {{ info }}
+        </div>
+    {% endfor %}
+</div>
+<div class="father">
+    <h1>密码修改界面</h1>
+    <form action="" method="post">
+        <p>原始密码</p>
+        <input type="password" name="oldpass" class="passwd" required placeholder="请输入原始密码..."><br>
+        <p>新密码</p>
+        <input type="password" name="newpass1" class="passwd" required placeholder="请输入新密码..."><br>
+        <p>确认密码</p>
+        <input type="password" name="newpass2" class="passwd" required placeholder="请再次确认密码..."><br>
+        <input type="submit" class="btn" value="确认修改">
+    </form>
+
+</div>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>

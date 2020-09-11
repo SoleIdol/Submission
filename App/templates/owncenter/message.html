@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>审阅反馈</title>
+    <link rel="stylesheet" href="../../static/dist/css/bootstrap.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url("../../static/img/q03.jpg") no-repeat fixed center/100% 100%;
+        }
+
+        .father {
+            width: 600px;
+            margin: 40px auto 10px;
+            background-color: rgba(225, 225, 225, 0.7);
+            padding: 20px 60px 80px;
+            border-radius: 6px;
+        }
+
+        .father h2 {
+            line-height: 60px;
+        }
+
+        .fm {
+            font-size: 16px;
+            line-height: 20px;
+            color: #222;
+        }
+
+        .btn {
+            position: relative;
+            float: right;
+            background-color: #eee;
+            border: 1px solid #aaa;
+        }
+
+        #text {
+            width: 480px;
+            height: 80px;
+            resize: none;
+            border: 1px solid #888;
+            padding: 5px 8px;
+            border-radius: 4px;
+        }
+
+        .box {
+            width: 480px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .son1 {
+            width: 496px;
+            height: 300px;
+            background-color: #fff;
+            padding: 5px 22px 5px 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .message_e, .message_u {
+            width: 300px;
+            padding: 5px;
+        }
+
+        .message_u {
+            float: right;
+        }
+
+        .message_e {
+            float: left;
+        }
+
+        .expert, .user {
+            padding: 5px;
+            border-radius: 4px;
+            line-height: 20px;
+        }
+
+        .user {
+            background-color: #ddd;
+            float: right;
+        }
+
+        .expert {
+            background-color: #6f6;
+            float: left;
+        }
+
+        .pe, .pu {
+            line-height: 12px;
+            font-weight: 400;
+            width: 290px;
+            margin-bottom: 0;
+        }
+
+        .pu {
+            float: right;
+            text-align: right;
+        }
+
+        .pe {
+            float: left;
+        }
+
+        .son1 .time {
+            width: 450px;
+            float: left;
+            text-align: center;
+            font-size: 8px;
+            margin-bottom: 0;
+        }
+
+        .son1 .eicon, .uicon {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        .uicon {
+            float: right;
+        }
+
+        .eicon {
+            float: left;
+        }
+
+        .jilu {
+            text-align: center;
+        }
+
+        .jilu a {
+            font-style: italic;
+            color: #2aabd2;
+        }
+
+        .son2 .one {
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .son2 .two {
+            float: right;
+            width: 150px;
+            text-align: right;
+            padding: 5px;
+        }
+
+        .son2 .two a {
+            border: 1px solid #888;
+            border-radius: 4px;
+            line-height: 30px;
+            padding: 5px 20px;
+            background-color: #eee;
+            color: #222;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+    <script src="../../static/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+<div class="father">
+    <h2>反馈信息</h2>
+    <p class="fm">稿件标题:{{ ums.first().title }}</p>
+    <div class="box">
+        <div class="son1">
+            <p class="jilu"><a href="/message_old/{{ ums.first().uid }}_{{ ums.first().fid }}_{{ ums.first().eid }}">========消息记录========</a>
+            </p>
+            {% for um in ums %}
+                <p class="time">{{ um.timestamp }}</p>
+                {% if um.expert %}
+                    <img src="{{ url_for('static',filename='upload/icon/s_'+eicon) }}" class="eicon" alt="没有找到头像...">
+                    <div class="message_e">
+                        <p class="pe">{{ um.name }}</p>
+                        <span class="expert">{{ um.content }}</span>
+                    </div>
+                {% else %}
+                    <img src="{{ url_for('static',filename='upload/icon/s_'+uicon) }}" class="uicon" alt="没有找到头像...">
+                    <div class="message_u">
+                        <p class="pu">{{ um.name }}</p>
+                        <span class="user">{{ um.content }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="son2">
+        <span class="one">发送消息</span>
+        <div class="two"><a
+                href="/message_old/{{ ums.first().uid }}_{{ ums.first().fid }}_{{ ums.first().eid }}">消息记录</a></div>
+        <form action="" method="post">
+            <textarea name="text" id="text" autofocus="autofocus"
+                      placeholder="发送消息...（温馨提示：在没有消息的时候，点击 发送 会刷新页面哦~）"></textarea>
+            <input type="submit" value="发送" class="btn" id="send">
+        </form>
+    </div>
+
+
+</div>
+<script>
+    $('#text').keydown(function (event) {
+        if (event.key === 'Enter') {
+            {# 按下 Enter 后，模拟点击发送按钮 #}
+            $('#send').click();
+        }
+    });
+
+    $('#send').click(function () {
+        location.reload();
+    });
+    {#  滚动条滚动的高度为出现滚动条时的总高度，加上可视区域的高度  #}
+    {#  获取高度把我心态搞炸了，直接给滚动条距离顶端一个较大的数，也不用电脑自己运算了，貌似也节省了时间  #}
+    $('.son1').scrollTop(10000000000000);
+    {#$('.son1').scrollTop(document.documentElement.scrollHeight + document.documentElement.clientHeight);#}
+    {#let xx = document.documentElement.scrollHeight + document.documentElement.clientHeight;#}
+    {#console.log('滚动高度是：', xx);#}
+    {#console.log('div高度是：', $('.son1').height());#}
+    {#console.log('div滚动条高度是：', $('.son1').scrollHeight);#}
+    {#console.log('div可视高度是：', $('.son1').clientHeight);#}
+
+
+</script>
+<script src="../../static/dist/js/bootstrap.js"></script>
+</body>
+</html>
